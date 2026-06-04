@@ -3,6 +3,7 @@
   /* Primary */
   --green-200: hsl(148, 38%, 91%);
   --green-600: hsl(169, 82%, 27%);
+  --green-hover: hsl(169, 82%, 18%);
   --red: hsl(0, 66%, 54%);
 
   /* Neutral */
@@ -58,6 +59,7 @@ body {
   background-color: var(--green-200);
   font-family: var(--ff-primary);
   font-weight: var(--fw-400);
+  position: relative;
 }
 
 .container {
@@ -68,7 +70,7 @@ body {
   width: max-content;
   padding-block: var(--container-padding);
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: clamp(1rem, 0.65rem + 1.5vw, 2rem);
 }
 
 .card {
@@ -217,7 +219,7 @@ input[type="checkbox"]:focus-visible {
 }
 
 .submit-btn:hover {
-  background-color: hsl(169, 82%, 18%);
+  background-color: var(--green-hover);
 }
 
 .error-message {
@@ -227,27 +229,25 @@ input[type="checkbox"]:focus-visible {
   margin-block-start: 0.5rem;
 }
 
-.success-alert {
-  display: none;
-}
-
 /* --- ERROR STATES --- */
 /* Shows the error message when the container has an error */
+fieldset.has-error .error-message,
 .form-group.has-error .error-message,
-.query-group.has-error .error-message,
-fieldset.has-error .error-message {
+.query-group.has-error .error-message {
   display: block;
 }
 
 /* Specific toggle for split email errors */
-.form-group.has-error .error-message.empty-error,
-.form-group.has-error .error-message.format-error {
-  display: none; /* Hide both initially if error occurs */
+.has-error .empty-error,
+.has-error .format-error {
+  display: none;
 }
-.form-group.has-error-empty .error-message.empty-error {
+
+.has-error-empty .empty-error {
   display: block;
 }
-.form-group.has-error-format .error-message.format-error {
+
+.has-error-format .format-error {
   display: block;
 }
 
@@ -264,25 +264,25 @@ fieldset.has-error .error-message {
 
 /* --- SUCCESS ALERT --- */
 .success-alert {
-  display: none; /* Hidden by default */
+  display: none;
   flex-direction: column;
   gap: 0.5rem;
-  background-color: var(--grey-900); /* Dark banner style */
+  background-color: var(--grey-900);
   color: var(--white);
   padding: 1.5rem;
   border-radius: 0.75rem;
-  position: fixed;
+  position: absolute;
   top: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 2rem);
-  max-width: 450px;
+  max-width: 28.125rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
 
 .success-alert.show {
-  display: flex; /* Snap open when submission is correct */
+  display: flex;
   animation: slideDown 0.3s ease-out forwards;
 }
 
@@ -326,5 +326,16 @@ fieldset.has-error .error-message {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--gap-x);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
