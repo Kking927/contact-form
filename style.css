@@ -122,7 +122,7 @@ legend::after {
 .form-group input[type="email"],
 .form-group textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 1rem;
   border: 1px solid var(--grey-500);
   border-radius: 8px;
   color: var(--grey-900);
