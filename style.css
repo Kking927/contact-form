@@ -57,8 +57,6 @@ body {
   background-color: var(--green-200);
   font-family: var(--ff-primary);
   font-weight: var(--fw-400);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
 }
 
 .container {
@@ -187,7 +185,7 @@ input[type="checkbox"]:focus-visible {
 .checkbox-group {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--gap-x);
   margin-block-start: 0.5rem;
 }
@@ -196,7 +194,6 @@ input[type="checkbox"]:focus-visible {
   accent-color: var(--green-600);
   width: 1.25rem;
   height: 1.25rem;
-  margin-top: 0.2rem;
   cursor: pointer;
 }
 
@@ -226,7 +223,7 @@ input[type="checkbox"]:focus-visible {
   display: none;
   color: var(--red);
   font-size: 0.875rem;
-  margin-top: 0.5rem;
+  margin-block-start: 0.5rem;
 }
 
 .success-alert {
