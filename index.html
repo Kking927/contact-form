@@ -15,7 +15,7 @@
 
 <body>
 
-  <div class="container">
+  <main class="container">
 
     <div class="success-alert" role="alert" aria-live="assertive">
       <div class="alert-header">
@@ -29,7 +29,7 @@
 
       <h1 class="title">Contact Us</h1>
 
-      <form action="#" method="POST" class="contact-form" novalidate>
+      <form action="#" method="post" class="contact-form" novalidate>
 
         <div class="name-row">
           <div class="form-group">
@@ -77,7 +77,7 @@
         <div class="form-group checkbox-group">
           <input type="checkbox" id="consent" name="consent" aria-describedby="consent-error" required>
           <label for="consent">I consent to being contacted by the team</label>
-          <p class="error-message" id="message-error">To submit this form, please consent to being contacted</p>
+          <p class="error-message" id="consent-error">To submit this form, please consent to being contacted</p>
         </div>
 
         <button type="submit" class="submit-btn">Submit</button>
@@ -86,7 +86,7 @@
 
     </div>
 
-  </div>
+  </main>
 
 </body>
 
