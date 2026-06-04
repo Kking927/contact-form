@@ -105,7 +105,8 @@ label {
 
 label::after,
 legend::after {
-  content: " *";
+  /* Generates the visual star but keeps it hidden from screen readers */
+  content: " *" / ""; 
   color: var(--green-600);
 }
 
@@ -157,6 +158,17 @@ legend {
   border: 1px solid var(--grey-500);
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* Ensure keyboard focus visibility for custom radio wrappers and checkboxes */
+.radio-option:has(input:focus-visible) {
+  outline: 2px solid var(--green-600);
+  outline-offset: 2px;
+}
+
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--green-600);
+  outline-offset: 2px;
 }
 
 .radio-option label {
