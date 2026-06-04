@@ -122,7 +122,7 @@ legend::after {
 .form-group input[type="email"],
 .form-group textarea {
   width: 100%;
-  padding: 1rem;
+  padding: clamp(0.625rem, 0.49rem + 0.56vw, 1rem);
   border: 1px solid var(--grey-500);
   border-radius: 8px;
   color: var(--grey-900);
@@ -260,9 +260,9 @@ fieldset.has-error .error-message,
 /* Highlights the input borders red */
 .has-error input,
 .has-error textarea,
-.has-error .radio-option,
 .has-error-empty input,
-.has-error-format input {
+.has-error-format input,
+.has-error .radio-option {
   border-color: var(--red);
 }
 
