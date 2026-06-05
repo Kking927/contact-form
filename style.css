@@ -28,6 +28,364 @@
   --container-padding: clamp(2rem, -1.042rem + 15.21vw, 6.75rem);
   --card: clamp(18.5rem, 8.97rem + 40.4vw, 48.75rem);
   --card-padding: clamp(1.25rem, 0.81rem + 1.88vw, 2.5rem);
+ --gap: clamp(1.125rem, 0.77rem + 1.48vw, 1.75rem);
+  --gap-x: clamp(0.75rem, 0.69rem + 0.23vw, 1rem);
+
+  /*   Box Shadow */
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* GLOBAL RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+input,
+button,
+textarea {
+  font: inherit;
+}
+
+body {
+  background-color: var(--green-200);
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-400);
+  position: relative;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding-block: var(--container-padding);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 0.65rem + 1.5vw, 2rem);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: var(--card);
+  padding: var(--card-padding);
+  border-radius: 1rem;
+  gap: var(--gap);
+}
+
+.title {
+  font-size: var(--title);
+  color: var(--grey-900);
+  font-weight: var(--fw-700);
+  align-self: flex-start;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+label {
+  color: var(--grey-900);
+  font-size: var(--labels);
+  font-weight: var(--fw-400);
+  display: block;
+  margin-block-end: clamp(0.5rem, 0.41rem + 0.38vw, 0.75rem);
+}
+
+label:not(.radio-option label)::after,
+legend::after {
+  /* Generates the visual star but keeps it hidden from screen readers */
+  content: " *" / "";
+  color: var(--green-600);
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: clamp(0.625rem, 0.49rem + 0.56vw, 1rem);
+  border: 1px solid var(--grey-500);
+  border-radius: 8px;
+  color: var(--grey-900);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 6.625rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--green-600);
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 0.41rem + 0.38vw, 0.75rem);
+  width: 100%;
+}
+
+legend {
+  color: var(--grey-900);
+  font-size: var(--labels);
+  display: block;
+  margin-block-end: clamp(0.625rem, 0.49rem + 0.56vw, 1rem);
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 0.41rem + 0.38vw, 0.75rem);
+  padding: clamp(0.5rem, 0.37rem + 0.56vw, 0.75rem)
+    clamp(0.625rem, 0.49rem + 0.56vw, 1rem);
+  border: 1px solid var(--grey-500);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Ensure keyboard focus visibility for custom radio wrappers and checkboxes */
+.radio-option:has(input:focus-visible) {
+  outline: 2px solid var(--green-600);
+  outline-offset: 2px;
+}
+
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--green-600);
+  outline-offset: 2px;
+}
+
+.radio-option label {
+  margin-block-end: 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.radio-option input[type="radio"] {
+  accent-color: var(--green-600);
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-block: clamp(0.5625rem, 0.46rem + 0.44vw, 0.875rem);
+  gap: var(--gap-x);
+}
+
+.checkbox-group input[type="checkbox"] {
+  accent-color: var(--green-600);
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkbox-group label {
+  margin-block-end: 0;
+  font-size: var(--consent);
+  line-height: 1;
+}
+
+.submit-btn {
+  color: var(--white);
+  background-color: var(--green-600);
+  font-size: var(--submit);
+  font-weight: var(--fw-700);
+  width: 100%;
+  padding-block: clamp(0.6rem, 0.47rem + 0.56vw, 1rem);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--green-hover);
+}
+
+.error-message {
+  display: none;
+  color: var(--red);
+  font-size: clamp(0.75rem, 0.71rem + 0.18vw, 0.875rem);
+  margin-block-start: clamp(0.375rem, 0.29rem + 0.38vw, 0.625rem);
+}
+
+/* ERROR STATES */
+.form-group.has-error input[type="text"],
+.form-group.has-error input[type="email"],
+.form-group.has-error textarea,
+.has-error input,
+.has-error textarea {
+  border-color: var(--red);
+}
+
+.form-group.has-error-empty input[type="text"],
+.form-group.has-error-empty input[type="email"],
+.has-error-empty input {
+  border-color: var(--red);
+}
+
+.form-group.has-error-format input[type="email"],
+.has-error-format input {
+  border-color: var(--red);
+}
+
+.has-error .radio-option {
+  border-color: var(--red);
+}
+
+.has-error .empty-error,
+.has-error .format-error {
+  display: none;
+}
+
+.has-error-empty .empty-error {
+  display: block;
+}
+
+.has-error-format .format-error {
+  display: block;
+}
+
+fieldset.has-error .error-message,
+.form-group.has-error .error-message,
+.query-group.has-error .error-message {
+  display: block;
+}
+
+/* --- SUCCESS ALERT --- */
+.success-alert {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--grey-900);
+  color: var(--white);
+  padding: clamp(0.75rem, 0.67rem + 0.35vw, 1rem);
+  border-radius: 0.75rem;
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 28.125rem;
+  box-shadow: var(--shadow);
+  z-index: 1000;
+}
+
+.success-alert.show {
+  display: flex;
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.alert-header h2 {
+  font-size: clamp(1rem, 0.91rem + 0.45vw, 1.125rem);
+  font-weight: var(--fw-700);
+}
+
+.success-alert p {
+  font-size: 0.95rem;
+  color: var(--green-200);
+}
+
+@keyframes slideDown {
+  from {
+    top: -5rem;
+    opacity: 0;
+  }
+  to {
+    top: 1.5rem;
+    opacity: 1;
+  }
+}
+
+/* Desktop Layout Adjustments Media Query */
+@media (min-width: 48rem) {
+  /* 768px */
+  .name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-x);
+  }
+
+  fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-x);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+}
+:root {
+  /* Colors */
+  /* Primary */
+  --green-200: hsl(148, 38%, 91%);
+  --green-600: hsl(169, 82%, 27%);
+  --green-hover: hsl(169, 82%, 18%);
+  --red: hsl(0, 66%, 54%);
+
+  /* Neutral */
+  --white: hsl(0, 0%, 100%);
+  --grey-500: hsl(186, 15%, 59%);
+  --grey-900: hsl(187, 24%, 22%);
+
+  /* Typography */
+  --ff-primary: "Karla", sans-serif;
+
+  /* Font Sizes */
+  --title: clamp(1.75rem, 1.66rem + 0.38vw, 2rem);
+  --labels: clamp(1rem, 0.95rem + 0.23vw, 1.125rem);
+  --consent: clamp(0.8125rem, 0.78rem + 0.18vw, 0.9375rem);
+  --submit: clamp(1rem, 0.95rem + 0.23vw, 1.125rem);
+
+  /* Font Weights */
+  --fw-400: 400;
+  --fw-700: 700;
+
+  /* Sizing & Fluid Spacing Layout */
+  --container-padding: clamp(2rem, -1.042rem + 15.21vw, 6.75rem);
+  --card: clamp(18.5rem, 8.97rem + 40.4vw, 48.75rem);
+  --card-padding: clamp(1.25rem, 0.81rem + 1.88vw, 2.5rem);
   --gap: clamp(1.125rem, 0.99rem + 0.56vw, 1.5rem);
   --gap-x: clamp(0.75rem, 0.69rem + 0.23vw, 1rem);
 
