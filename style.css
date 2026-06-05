@@ -28,7 +28,8 @@
   --container-padding: clamp(2rem, -1.042rem + 15.21vw, 6.75rem);
   --card: clamp(18.5rem, 8.97rem + 40.4vw, 48.75rem);
   --card-padding: clamp(1.25rem, 0.81rem + 1.88vw, 2.5rem);
- --gap: clamp(1.125rem, 0.77rem + 1.48vw, 1.75rem);
+  --submit: clamp(0.6rem, 0.47rem + 0.56vw, 1.25rem);
+  --gap: clamp(1.125rem, 0.77rem + 1.48vw, 1.5rem);
   --gap-x: clamp(0.75rem, 0.69rem + 0.23vw, 1rem);
 
   /*   Box Shadow */
@@ -218,7 +219,7 @@ input[type="checkbox"]:focus-visible {
   font-size: var(--submit);
   font-weight: var(--fw-700);
   width: 100%;
-  padding-block: clamp(0.6rem, 0.47rem + 0.56vw, 1.125rem);
+  padding-block: var(--submit);
   border: none;
   border-radius: 8px;
   cursor: pointer;
