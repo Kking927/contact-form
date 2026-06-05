@@ -159,7 +159,7 @@ legend {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  padding: clamp(0.5rem, 0.37rem + 0.56vw, 0.75rem) clamp(0.625rem, 0.49rem + 0.56vw, 1rem);
   border: 1px solid var(--grey-500);
   border-radius: 8px;
   cursor: pointer;
@@ -193,7 +193,7 @@ input[type="checkbox"]:focus-visible {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-block: 0.5rem;
+  padding-block: clamp(0.5625rem, 0.41rem + 0.655vw, 1rem);
   gap: var(--gap-x);
 }
 
