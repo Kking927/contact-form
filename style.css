@@ -261,7 +261,11 @@ fieldset.has-error .error-message,
 .has-error input,
 .has-error textarea,
 .has-error-empty input,
-.has-error-format input,
+.has-error-format input {
+  border-color: var(--red);
+}
+
+/* Highlights the input borders red */
 .has-error .radio-option {
   border-color: var(--red);
 }
